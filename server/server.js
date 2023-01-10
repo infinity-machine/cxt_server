@@ -2,6 +2,7 @@ import express from 'express'
 import * as dotenv from 'dotenv'
 import cors from 'cors'
 import { Configuration, OpenAIApi } from 'openai'
+import path, {dirname} from 'path'
 
 dotenv.config()
 
@@ -14,6 +15,10 @@ const openai = new OpenAIApi(configuration);
 const app = express()
 app.use(cors())
 app.use(express.json())
+
+app.get('/', (req, res) => {
+  res.send('hi')
+})
 
 app.post('/', async (req, res) => {
   try {
